@@ -1,8 +1,0 @@
-function [outputArg1,outputArg2] = chebyshev_tapering(N_x,SLL)
-%CHEBYSHEV_TAPERING calculates the element weights necessary to achieve
-%chebyshev tapering, i.e. constant side lobe level (SLL)
-% INPUT
-    N_x: scalar; number of elements, i.e. weights
-    SLL: scalar; "side-lobe lee"
-end
-
