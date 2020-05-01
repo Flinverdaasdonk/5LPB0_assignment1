@@ -1,7 +1,14 @@
-function [outputArg1,outputArg2] = chebyshev_tapering(inputArg1,inputArg2)
-%CHEBYSHEV_TAPERING Summary of this function goes here
-%   Source: Phased Array Antenna Handbook by Mailloux. Section 3.1.4 "Dolph-Chebyshev synthesis"
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+function a = chebyshev_tapering(N_x,SLL)
+    %CHEBYSHEV_TAPERING calculates the element weights necessary to achieve
+    %chebyshev tapering, i.e. constant side lobe level (SLL)
+    % INPUT
+    %     N_x: scalar; number of elements, i.e. weights
+    %     SLL: scalar; "side-lobe level", indicates the dB difference between the 
+    %         lobe and the side lobes
+    %         
+    % OUTPUT
+    %     a: row_vector; weights for the elements in the phased array
+    
+    a = chebwin(N_x, SLL);
 end
 

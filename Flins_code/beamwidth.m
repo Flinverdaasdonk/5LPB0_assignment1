@@ -11,6 +11,7 @@ function [beamwidth, beamwidth_indices] = beamwidth(NPRP, Theta)
     index_of_max = index_of_max(ceil(end/2));  % in case several indices have the highest value, pick only one.
     
     
+    upper_index = length(NPRP);  % if no upper_index is found, take the highest index in the array
     for i = index_of_max:length(NPRP)
         % loop over the NPRP incrementally to find upper limit
        if NPRP(i) < -3  % when the current NPRP is below -3dB
@@ -19,6 +20,7 @@ function [beamwidth, beamwidth_indices] = beamwidth(NPRP, Theta)
        end    
     end
     
+    lower_index = 1;  % if no lower_index is found, take the lowest index in the array
     for i = index_of_max:-1:1
        % loop over NPRP decrementally to find lower limit
        if NPRP(i) < -3  % when the current NPRP is below -3dB

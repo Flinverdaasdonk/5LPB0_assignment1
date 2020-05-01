@@ -10,13 +10,19 @@ k_0 = 2*pi/lambda;
 
 %% Antenna specifications
 A1.N_x = 140;  %[-] number of elements in the phased array (i.e. the number of individual antennas)
-A1.d_x = 0.625*lambda;  % [m] distance between elemental antennas
 A1.Theta_0 = -15;  % [degrees] direction of optimum sensitivity
+A1.d_x = 0.625*lambda;
+
+% Gratis lobes appear in the radiation pattern when a > 1 in the piece of
+% code below:
+% a = 1.1;
+% A1.d_x = a*(1/(1+abs(sind(A1.Theta_0))))*lambda;  % [m] distance between elemental antennas
+% A1.a_k = uniform_tapering(A1.N_x);
 
 A1.a_k = uniform_tapering(A1.N_x);
-A1.psi_k = ones(1, A1.N_x)*A1.Theta_0;
+%A1.a_k = chebyshev_tapering(140, 32);
 
-A1.S = array_factor(A1.a_k, A1.psi_k, A1.d_x, A1.Theta_0, k_0, Theta);
+A1.S = array_factor(A1.a_k, A1.d_x, A1.Theta_0, k_0, Theta);
 [NPRP_dB, gain_dB] = normalised_power_radiation_pattern(A1.S); 
 A1.NPRP = NPRP_dB;
 
