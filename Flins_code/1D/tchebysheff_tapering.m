@@ -1,4 +1,4 @@
-function a = chebyshev_tapering(N_x,SLL)
+function a = tchebysheff_tapering(N_x,SLL)
     %CHEBYSHEV_TAPERING calculates the element weights necessary to achieve
     %chebyshev tapering, i.e. constant side lobe level (SLL)
     % INPUT

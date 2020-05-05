@@ -19,8 +19,8 @@ A1.d_x = 0.625*lambda;
 % A1.d_x = a*(1/(1+abs(sind(A1.Theta_0))))*lambda;  % [m] distance between elemental antennas
 % A1.a_k = uniform_tapering(A1.N_x);
 
-A1.a_k = uniform_tapering(A1.N_x);
-%A1.a_k = chebyshev_tapering(140, 32);
+%A1.a_k = uniform_tapering(A1.N_x);
+A1.a_k = tchebysheff_tapering(140, 32);
 
 A1.S = array_factor(A1.a_k, A1.d_x, A1.Theta_0, k_0, Theta);
 [NPRP_dB, gain_dB] = normalised_power_radiation_pattern(A1.S); 
