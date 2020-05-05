@@ -6,8 +6,8 @@ clc;
 %% Assign 1
 % 1. Setup the ULA settings as in figure 1 of the assignment
 
-K = 8;
-L = 8;                  % Number of sensors
+K = 25;
+L = 25;                  % Number of sensors
 c = 3*10^8;
 f = 2.75*10^9;     
 dx = 0.525*c/f;      % meters of element spacing in x-direction 
@@ -27,18 +27,30 @@ v0=sind(th0)*sind(ph0);
 % plot(th,s1);
 % axis([-90 90 -50 0]); 
 m=0;
+m1=0;
 n=0;
+n1=0;
 for k=1:25
-    beta1=2*pi*(k-1)*0.525*[1,0]'*(u-u0);
-    s1=exp(1j*beta1);
+    beta1=2*pi*(k-1)*0.525*(u-u0);
+    c1=chebwin(25);
+    s1=c1(k,1)*exp(1j*beta1);
+    s11=exp(1j*beta1);
     m=m+s1;
+    m1=m1+s11;
 end
 for l=1:25
-    beta2=2*pi*(l-1)*0.525*[0,1]'*(v-v0);
-    s2=exp(1j*beta2);
+    beta2=2*pi*(l-1)*0.525*(v-v0);
+    c2=chebwin(25);
+    s2=c2(l,1)*exp(1j*beta2);
+    s21=exp(1j*beta2);
     n=n+s2;
+    n1=n1+s21;
 end
-s=abs(m.*n)./625;
-p= 20*log10(s);
+s=abs(m.*n).^2/max(abs(m.*n).^2);
+p= 10*log10(s);
 plot(th,p);
-axis([-90 90 -50 0]); 
+hold on
+ss=abs(m1.*n1).^2/max(abs(m1.*n1).^2);
+pp= 10*log10(ss);
+plot(th,pp);
+axis([-90 90 -100 0]); 
