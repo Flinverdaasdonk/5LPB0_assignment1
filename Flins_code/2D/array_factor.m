@@ -17,9 +17,6 @@ function S = array_factor(N, d, a, Theta_0, phi_0, k_0, phi, Theta)
     % OUTPUT:
     %     S: matrix: 2D array factor
 
-    if length(phi) ~= length(Theta)
-        error('phi and Theta should be the same length')
-    end
     
     d_x = d(1);
     d_y = d(2);
@@ -42,5 +39,6 @@ function S = array_factor(N, d, a, Theta_0, phi_0, k_0, phi, Theta)
            S = S + S_k_l;
        end
     end
+    
 end
 
