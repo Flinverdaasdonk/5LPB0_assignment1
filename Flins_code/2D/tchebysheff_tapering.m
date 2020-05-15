@@ -14,7 +14,7 @@ function a = tchebysheff_tapering(N, SLL)
 
     a_x = chebwin(N_x, SLL);
     a_y = chebwin(N_y, SLL);
-    % a = a_x*a_y.';
-    a = (a_x + a_y.')/2;
+    a = a_x*a_y.';
+    % a = (a_x + a_y.')/2;
 end
 
