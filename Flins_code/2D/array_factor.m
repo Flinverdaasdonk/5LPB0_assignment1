@@ -28,8 +28,8 @@ function S = array_factor(N, d, a, f, Theta_0, phi_0, k_0, phi, Theta)
     
     u_0 = sind(Theta_0)*cosd(phi_0);  % convert to u-coordinates
     v_0 = sind(Theta_0)*sind(phi_0);
-    u = sind(Theta).'*cos(phi);  % (6.37) 
-    v = sind(Theta).'*sin(phi); % (6.37)
+    u = sind(Theta).'*cosd(phi);  % (6.37) 
+    v = sind(Theta).'*sind(phi); % (6.37)
       
   
 
